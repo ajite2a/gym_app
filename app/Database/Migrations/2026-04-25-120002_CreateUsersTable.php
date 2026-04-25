@@ -15,6 +15,12 @@ class CreateUsersTable extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
+            'plan_id' => [
+                'type'       => 'INT',
+                'constraint' => 11,
+                'unsigned'   => true,
+                'null'       => true,
+            ],
             'name' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
@@ -36,6 +42,42 @@ class CreateUsersTable extends Migration
                 'constraint' => ['admin', 'trainer', 'member'],
                 'default'    => 'member',
             ],
+            'status' => [
+                'type'       => 'ENUM',
+                'constraint' => ['active', 'inactive'],
+                'default'    => 'active',
+            ],
+            'profile_picture' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 255,
+                'null'       => true,
+            ],
+            'phone' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 20,
+                'null'       => true,
+            ],
+            'address' => [
+                'type'       => 'TEXT',
+                'null'       => true,
+            ],
+            'date_of_birth' => [
+                'type'       => 'DATE',
+                'null'       => true,
+            ],
+            'gender' => [
+                'type'       => 'ENUM',
+                'constraint' => ['male', 'female', 'other'],
+                'null'       => true,
+            ],
+            'joined_at' => [
+                'type'    => 'DATETIME',
+                'null'    => true,
+            ],
+            'last_login' => [
+                'type'    => 'DATETIME',
+                'null'    => true,
+            ],
             'created_at' => [
                 'type'    => 'DATETIME',
                 'null'    => true,
@@ -47,6 +89,7 @@ class CreateUsersTable extends Migration
         ]);
 
         $this->forge->addKey('id', true);
+        $this->forge->addForeignKey('plan_id', 'plans', 'id', 'SET NULL', 'CASCADE');
         $this->forge->createTable('users');
     }
 
