@@ -45,3 +45,12 @@ $routes->get('/subscriptions/form/(:num)', 'Subscriptions::form/$1', ['as' => 's
 $routes->post('/subscriptions/form/(:num)', 'Subscriptions::form/$1');                        // Update subscription
 $routes->delete('/subscriptions/delete/(:num)', 'Subscriptions::delete/$1');                   // Delete subscription
 $routes->post('/subscriptions/delete/(:num)', 'Subscriptions::delete/$1');                     // Delete subscription (POST for forms)
+
+// Attendance routes (CRUD)
+$routes->get('/attendance', 'Attendance::index', ['as' => 'attendance']);                      // List all attendance records
+$routes->get('/attendance/form', 'Attendance::form', ['as' => 'attendance.form']);             // Show create form
+$routes->post('/attendance/form', 'Attendance::form');                                         // Store new attendance record
+$routes->get('/attendance/form/(:num)', 'Attendance::form/$1', ['as' => 'attendance.form.edit']); // Show edit form
+$routes->post('/attendance/form/(:num)', 'Attendance::form/$1');                              // Update attendance record
+$routes->delete('/attendance/delete/(:num)', 'Attendance::delete/$1');                         // Delete attendance record
+$routes->post('/attendance/delete/(:num)', 'Attendance::delete/$1');                           // Delete attendance record (POST for forms)

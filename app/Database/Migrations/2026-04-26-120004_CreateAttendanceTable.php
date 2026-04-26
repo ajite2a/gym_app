@@ -19,19 +19,34 @@ class CreateAttendanceTable extends Migration
                 'type'       => 'INT',
                 'constraint' => 11,
                 'unsigned'   => true,
-                'null'       => false,
+            ],
+            'attendance_date' => [
+                'type' => 'DATE',
             ],
             'check_in_time' => [
-                'type'   => 'DATETIME',
-                'null'   => false,
+                'type'   => 'TIME',
+                'null'   => true,
+            ],
+            'check_out_time' => [
+                'type'   => 'TIME',
+                'null'   => true,
+            ],
+            'status' => [
+                'type'       => 'ENUM',
+                'constraint' => ['present', 'absent', 'late', 'early_leave'],
+                'default'    => 'present',
+            ],
+            'notes' => [
+                'type' => 'TEXT',
+                'null' => true,
             ],
             'created_at' => [
-                'type'    => 'DATETIME',
-                'null'    => true,
+                'type' => 'DATETIME',
+                'null' => true,
             ],
             'updated_at' => [
-                'type'    => 'DATETIME',
-                'null'    => true,
+                'type' => 'DATETIME',
+                'null' => true,
             ],
         ]);
 
