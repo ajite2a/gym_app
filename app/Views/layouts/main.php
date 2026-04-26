@@ -68,7 +68,6 @@
             background: rgba(20, 25, 40, 0.9);
             border-right: 2px solid #333;
             min-height: calc(100vh - 80px);
-            padding: 30px 0;
             position: fixed;
             width: 250px;
             left: 0;
@@ -379,41 +378,23 @@
     <!-- Navbar -->
     <?= $this->include('partials/_navbar') ?>
 
-    <!-- Flash Messages -->
-    <div class="container-fluid" style="padding: 20px 30px 0 30px;">
-        <?php if (session()->getFlashdata('success')): ?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <i class="fas fa-check-circle"></i> <?= session()->getFlashdata('success') ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>
-        <?php endif; ?>
-        
-        <?php if (session()->getFlashdata('error')): ?>
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <i class="fas fa-exclamation-circle"></i> <?= session()->getFlashdata('error') ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>
-        <?php endif; ?>
-    </div>
+    
 
-    <div style="display: flex;">
+    <div>
         <!-- Sidebar -->
         <?= $this->include('partials/_sidebar') ?>
-
+        
         <!-- Main Content -->
-        <div class="main-content">
-            <!-- Page Header -->
-            <div class="page-header">
-                <h1>Welcome, <?= $user_name ?? 'User' ?>!</h1>
-                <p>Manage your gym efficiently with our dashboard</p>
-            </div>
-
+        <div class="main-content pt-2">
+            <!-- Flash Message -->
+            <?= $this->include('partials/_flashMessage') ?>
             <!-- Content Section -->
             <?= $this->renderSection('content') ?>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
     <script>
         // Mobile sidebar toggle

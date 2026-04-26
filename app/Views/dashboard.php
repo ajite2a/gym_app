@@ -2,6 +2,12 @@
 
 <?= $this->section('content') ?>
 
+<!-- Page Header -->
+<div class="page-header">
+    <h1>Welcome, <?= $user_name ?? 'User' ?>!</h1>
+    <p>Manage your gym efficiently with our dashboard</p>
+</div>
+
 <!-- Welcome Section -->
 <div class="welcome-section">
     <h2><i class="fas fa-info-circle"></i> Quick Stats</h2>
