@@ -62,6 +62,7 @@ class Users extends BaseController
                 'email' => 'required|valid_email|max_length[255]' . ($isEdit ? '|is_unique[users.email,id,' . $id . ']' : '|is_unique[users.email]'),
                 'phone' => 'permit_empty|numeric|max_length[20]',
                 'status' => 'required|in_list[active,inactive]',
+                'profile_picture' => 'permit_empty|is_image[profile_picture]|max_size[profile_picture,5120]',
             ];
 
             if (!$isEdit) {
@@ -80,6 +81,15 @@ class Users extends BaseController
                     'address' => $this->request->getPost('address') ?? null,
                     'gender' => $this->request->getPost('gender') ?? null,
                 ];
+
+                // Handle profile picture upload
+                $file = $this->request->getFile('profile_picture');
+                if ($file && $file->isValid() && !$file->hasMoved()) {
+                    // Generate unique filename
+                    $newName = $file->getRandomName();
+                    $file->move(FCPATH . 'uploads', $newName);
+                    $data['profile_picture'] = $newName;
+                }
 
                 if (!$isEdit) {
                     $data['password'] = password_hash($this->request->getPost('password'), PASSWORD_BCRYPT);

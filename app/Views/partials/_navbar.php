@@ -28,6 +28,9 @@
                     <a class="nav-link <?= $isActive('/plans') ?>" href="/plans">Plans</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link <?= $isActive('/subscriptions') ?>" href="<?= route_to('subscriptions') ?>">Subscriptions</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link <?= $isActive('/settings') ?>" href="/settings">Settings</a>
                 </li>
                 <li class="nav-item">

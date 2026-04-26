@@ -25,6 +25,7 @@
             <thead>
                 <tr style="border-bottom: 2px solid #ccff00;">
                     <th style="background-color: #ccff00; color: #000; padding: 12px;">ID</th>
+                    <th style="background-color: #ccff00; color: #000; padding: 12px;">Profile</th>
                     <th style="background-color: #ccff00; color: #000; padding: 12px;">Name</th>
                     <th style="background-color: #ccff00; color: #000; padding: 12px;">Email</th>
                     <th style="background-color: #ccff00; color: #000; padding: 12px;">Phone</th>
@@ -36,6 +37,17 @@
                 <?php foreach ($users as $user): ?>
                     <tr style="border-bottom: 1px solid #333;">
                         <td><?= $user['id'] ?></td>
+                        <td>
+                            <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; border: 2px solid #333; background: rgba(20, 25, 40, 0.8);">
+                                <?php if (!empty($user['profile_picture'])): ?>
+                                    <img src="<?= base_url('uploads/' . $user['profile_picture']) ?>" alt="Profile" style="width: 100%; height: 100%; object-fit: cover;">
+                                <?php else: ?>
+                                    <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #666;">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        </td>
                         <td>
                             <strong><?= esc($user['name']) ?></strong>
                         </td>

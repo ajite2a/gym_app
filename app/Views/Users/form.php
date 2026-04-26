@@ -17,7 +17,7 @@
     <div class="col-md-8">
         <!-- Form Card -->
         <div class="dashboard-card">
-            <form method="POST" action="<?= $action === 'update' ? route_to('users.form.edit', $role, $user['id']) : route_to('users.form.create', $role) ?>" novalidate>
+            <form method="POST" action="<?= $action === 'update' ? route_to('users.form.edit', $role, $user['id']) : route_to('users.form.create', $role) ?>" enctype="multipart/form-data" novalidate>
                 <?= csrf_field() ?>
                 <?php if (session()->getFlashdata('errors')): ?>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -74,7 +74,35 @@
                     </div>
                 </div>
 
-                <!-- Password & Confirm Password Row (only on create) -->
+                <!-- Profile Picture -->
+                <div class="mb-4">
+                    <label for="profile_picture" class="form-label" style="color: #ccff00;">Profile Picture</label>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <?php if (!empty($user['profile_picture'])): ?>
+                            <div style="width: 80px; height: 80px; border-radius: 8px; overflow: hidden; border: 2px solid #333;">
+                                <img src="<?= base_url('uploads/' . $user['profile_picture']) ?>" alt="Profile" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                        <?php else: ?>
+                            <div style="width: 80px; height: 80px; border-radius: 8px; background: rgba(20, 25, 40, 0.8); border: 2px dashed #333; display: flex; align-items: center; justify-content: center; color: #666;">
+                                <i class="fas fa-user fa-2x"></i>
+                            </div>
+                        <?php endif; ?>
+                        <input 
+                            type="file" 
+                            class="form-control <?= session()->getFlashdata('errors.profile_picture') ? 'is-invalid' : '' ?>" 
+                            id="profile_picture" 
+                            name="profile_picture" 
+                            accept="image/*"
+                            style="background: rgba(20, 25, 40, 0.8); border: 2px solid #333; color: #aaa; flex: 1;"
+                        >
+                    </div>
+                    <small style="color: #888; display: block; margin-top: 8px;">Supported formats: JPG, PNG, GIF (Max 5MB)</small>
+                    <?php if (session()->getFlashdata('errors.profile_picture')): ?>
+                        <div class="invalid-feedback" style="display: block; color: #ff4444;">
+                            <?= session()->getFlashdata('errors.profile_picture') ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
                 <?php if ($action === 'create'): ?>
                 <div class="row">
                     <!-- Password -->

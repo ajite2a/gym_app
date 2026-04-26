@@ -36,3 +36,12 @@ $routes->post('/users/(:alpha)/delete/(:num)', 'Users::delete/$1/$2');          
 // Convenience routes for trainers and members
 $routes->get('/trainers', 'Users::index/trainer');                                             // Redirect to trainers list
 $routes->get('/members', 'Users::index/member');                                               // Redirect to members list
+
+// Subscriptions routes (CRUD)
+$routes->get('/subscriptions', 'Subscriptions::index', ['as' => 'subscriptions']);             // List all subscriptions
+$routes->get('/subscriptions/form', 'Subscriptions::form', ['as' => 'subscriptions.form.create']); // Show create form
+$routes->post('/subscriptions/form', 'Subscriptions::form');                                   // Store new subscription
+$routes->get('/subscriptions/form/(:num)', 'Subscriptions::form/$1', ['as' => 'subscriptions.form.edit']); // Show edit form
+$routes->post('/subscriptions/form/(:num)', 'Subscriptions::form/$1');                        // Update subscription
+$routes->delete('/subscriptions/delete/(:num)', 'Subscriptions::delete/$1');                   // Delete subscription
+$routes->post('/subscriptions/delete/(:num)', 'Subscriptions::delete/$1');                     // Delete subscription (POST for forms)

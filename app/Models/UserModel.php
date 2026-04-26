@@ -67,6 +67,10 @@ class UserModel extends Model
             'max_length'    => 'Confirm password must not exceed 255 characters.',
             'matches'       => 'Confirm password must match the password.',
         ],
+        'profile_picture' => [
+            'is_image'      => 'Profile picture must be a valid image file.',
+            'max_size'      => 'Profile picture must not exceed 5MB.',
+        ],
     ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
