@@ -23,3 +23,16 @@ $routes->get('/plans/form/(:num)', 'Plans::form/$1');    // Show edit form
 $routes->post('/plans/form/(:num)', 'Plans::form/$1');   // Update plan
 $routes->delete('/plans/delete/(:num)', 'Plans::delete/$1'); // Delete plan
 $routes->post('/plans/delete/(:num)', 'Plans::delete/$1'); // Delete plan (POST for forms)
+
+// Users routes (CRUD) - Trainers and Members
+$routes->get('/users/(:alpha)', 'Users::index/$1', ['as' => 'users']);                          // List users by role
+$routes->get('/users/(:alpha)/form', 'Users::form/$1', ['as' => 'users.form.create']);        // Show create form
+$routes->post('/users/(:alpha)/form', 'Users::form/$1');                                       // Store new user
+$routes->get('/users/(:alpha)/form/(:num)', 'Users::form/$1/$2', ['as' => 'users.form.edit']); // Show edit form
+$routes->post('/users/(:alpha)/form/(:num)', 'Users::form/$1/$2');                             // Update user
+$routes->delete('/users/(:alpha)/delete/(:num)', 'Users::delete/$1/$2', ['as' => 'users.delete']); // Delete user
+$routes->post('/users/(:alpha)/delete/(:num)', 'Users::delete/$1/$2');                         // Delete user (POST for forms)
+
+// Convenience routes for trainers and members
+$routes->get('/trainers', 'Users::index/trainer');                                             // Redirect to trainers list
+$routes->get('/members', 'Users::index/member');                                               // Redirect to members list

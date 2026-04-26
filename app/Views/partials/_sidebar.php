@@ -13,12 +13,12 @@
             </a>
         </li>
         <li>
-            <a href="/members" class="<?= $isActive('/members') ?>">
+            <a href="<?= route_to('users', 'member') ?>" class="<?= $isActive('/users/member') ?>">
                 <i class="fas fa-users"></i> Members
             </a>
         </li>
         <li>
-            <a href="/trainers" class="<?= $isActive('/trainers') ?>">
+            <a href="<?= route_to('users', 'trainer') ?>" class="<?= $isActive('/users/trainer') ?>">
                 <i class="fas fa-user-tie"></i> Trainers
             </a>
         </li>

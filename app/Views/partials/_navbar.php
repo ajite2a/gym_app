@@ -19,7 +19,10 @@
                     <a class="nav-link <?= $isActive('/dashboard') ?>" href="/dashboard">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?= $isActive('/members') ?>" href="/members">Members</a>
+                    <a class="nav-link <?= $isActive('/users/member') ?>" href="<?= route_to('users', 'member') ?>">Members</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?= $isActive('/users/trainer') ?>" href="<?= route_to('users', 'trainer') ?>">Trainers</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link <?= $isActive('/plans') ?>" href="/plans">Plans</a>
@@ -28,7 +31,7 @@
                     <a class="nav-link <?= $isActive('/settings') ?>" href="/settings">Settings</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-logout btn-sm" href="/logout">Logout</a>
+                    <a class="nav-link" href="/logout">Logout</a>
                 </li>
             </ul>
         </div>
