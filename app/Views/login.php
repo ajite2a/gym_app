@@ -90,14 +90,15 @@
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             overflow: hidden;
             width: 100%;
-            max-width: 420px;
+            max-width: 580px;
             z-index: 10;
             backdrop-filter: blur(10px);
             border: 2px solid rgba(204, 255, 0, 0.2);
             animation: slideUp 0.6s ease-out;
             max-height: 90vh;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            min-height: 500px;
         }
 
         @keyframes slideUp {
@@ -111,10 +112,35 @@
             }
         }
 
+        /* Left Side - Image */
+        .login-left {
+            flex: 0.9;
+            background: url('<?= base_url('default.png') ?>') center/cover no-repeat;
+            /* background-attachment: fixed; */
+            position: relative;
+            border-right: 2px solid #ccff00;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 30px;
+            box-shadow: inset 0 0 30px rgba(204, 255, 0, 0.3), inset 0 0 60px rgba(204, 255, 0, 0.15);
+        }
+
+        
+
+        /* Right Side - Form */
+        .login-right {
+            flex: 1.2;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
         .login-header {
             background: linear-gradient(135deg, #1a1f3a 0%, #111827 100%);
             color: white;
-            padding: 35px 20px;
+            padding: 25px 20px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -178,6 +204,7 @@
         .login-body {
             padding: 25px 25px;
             animation: fadeIn 0.8s ease-out 0.3s both;
+            flex: 1;
         }
 
         @keyframes fadeIn {
@@ -379,6 +406,29 @@
             color: #aaa;
         }
 
+        .login-slogan {
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #ccff00;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .login-slogan::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ccff00, transparent);
+        }
+
         .signup-link a {
             color: #ccff00;
             text-decoration: none;
@@ -444,31 +494,214 @@
             animation: slideDown 0.3s ease-out;
         }
 
-        @media (max-width: 576px) {
+        @media (max-width: 1200px) {
             .login-container {
-                margin: 15px;
-                max-width: 100%;
+                max-width: 90%;
             }
+        }
 
-            .login-body {
-                padding: 20px 18px;
-            }
-
-            .login-header {
-                padding: 30px 12px;
+        @media (max-width: 1024px) {
+            .login-container {
+                max-width: 85%;
+                min-height: 450px;
             }
 
             .login-header h1 {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
+            }
+
+            .login-body {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .login-container {
+                flex-direction: column;
+                max-width: 100%;
+                min-height: auto;
+                margin: 10px;
+            }
+
+            .login-left {
+                border-right: none;
+                border-bottom: 2px solid #ccff00;
+                min-height: 280px;
+                width: 100%;
+            }
+
+            .login-right {
+                min-height: auto;
+                width: 100%;
+            }
+
+            .login-header h1 {
+                font-size: 1.7rem;
+            }
+
+            .login-body {
+                padding: 20px;
+            }
+
+            .form-control {
+                padding: 8px 10px;
+                font-size: 0.85rem;
+            }
+
+            .btn-login {
+                padding: 9px;
+                font-size: 0.9rem;
+            }
+
+            .login-slogan {
+                font-size: 0.85rem;
+                margin-bottom: 8px;
+                letter-spacing: 0.5px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                margin: 10px;
+                max-width: calc(100% - 20px);
+                min-height: auto;
+                border-radius: 15px;
+            }
+
+            .login-left {
+                min-height: 250px;
+            }
+
+            .login-header {
+                padding: 20px 15px;
+            }
+
+            .login-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .login-header p {
+                font-size: 0.8rem;
+            }
+
+            .login-body {
+                padding: 18px;
+            }
+
+            .form-group {
+                margin-bottom: 12px;
+            }
+
+            .form-label {
+                font-size: 0.8rem;
+                margin-bottom: 5px;
+            }
+
+            .form-control {
+                padding: 8px 10px;
+                font-size: 0.85rem;
+            }
+
+            .options-row {
+                gap: 5px;
+                margin-bottom: 10px;
+            }
+
+            .form-check-label {
+                font-size: 0.8rem;
+            }
+
+            .forget-password a {
+                font-size: 0.75rem;
+            }
+
+            .btn-login {
+                padding: 9px;
+                font-size: 0.9rem;
+                margin-top: 6px;
+            }
+
+            .signup-link {
+                font-size: 0.75rem;
+                margin-top: 10px;
+                padding-top: 10px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .login-container {
+                margin: 8px;
+                max-width: calc(100% - 16px);
+                border-radius: 12px;
+                min-height: auto;
+            }
+
+            .login-left {
+                min-height: 200px;
+                padding: 20px 15px;
+            }
+
+            .login-header {
+                padding: 15px 12px;
+                border-bottom: 1px solid #ccff00;
+            }
+
+            .login-header h1 {
+                font-size: 1.3rem;
             }
 
             .login-header p {
                 font-size: 0.75rem;
+                margin-top: 5px;
+            }
+
+            .login-body {
+                padding: 15px;
+            }
+
+            .form-group {
+                margin-bottom: 10px;
+            }
+
+            .form-label {
+                font-size: 0.75rem;
+                margin-bottom: 4px;
+            }
+
+            .form-label i {
+                font-size: 0.85rem;
+                margin-right: 6px;
+            }
+
+            .form-control {
+                padding: 7px 8px;
+                font-size: 0.8rem;
+                border-radius: 8px;
+            }
+
+            .form-control::placeholder {
+                font-size: 0.8rem;
+            }
+
+            .form-check {
+                margin-bottom: 8px;
+            }
+
+            .form-check-input {
+                width: 16px;
+                height: 16px;
+            }
+
+            .form-check-label {
+                font-size: 0.75rem;
+                margin-left: 6px;
             }
 
             .options-row {
                 flex-direction: column;
                 align-items: flex-start;
+                gap: 6px;
+                margin-bottom: 8px;
             }
 
             .forget-password {
@@ -476,8 +709,229 @@
                 width: 100%;
             }
 
-            .social-login {
-                flex-wrap: wrap;
+            .forget-password a {
+                font-size: 0.7rem;
+            }
+
+            .btn-login {
+                padding: 8px;
+                font-size: 0.85rem;
+                margin-top: 5px;
+                border-radius: 8px;
+            }
+
+            .alert {
+                padding: 8px 12px;
+                font-size: 0.75rem;
+                margin-bottom: 8px;
+                border-radius: 6px;
+            }
+
+            .error-message {
+                font-size: 0.7rem;
+                margin-top: 2px;
+            }
+
+            .signup-link {
+                font-size: 0.7rem;
+                margin-top: 8px;
+                padding-top: 8px;
+            }
+
+            .login-slogan {
+                font-size: 0.8rem;
+                margin-bottom: 6px;
+                letter-spacing: 0.3px;
+            }
+
+            .login-slogan::after {
+                width: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                margin: 5px;
+                max-width: calc(100% - 10px);
+                border-radius: 10px;
+                min-height: auto;
+                flex-direction: column;
+            }
+
+            .login-left {
+                min-height: 150px;
+                padding: 15px 10px;
+                border-right: none;
+                border-bottom: 2px solid #ccff00;
+            }
+
+            .login-right {
+                width: 100%;
+            }
+
+            .login-header {
+                padding: 12px 10px;
+            }
+
+            .login-header h1 {
+                font-size: 1.1rem;
+            }
+
+            .login-header p {
+                font-size: 0.7rem;
+                margin-top: 3px;
+            }
+
+            .login-body {
+                padding: 12px;
+            }
+
+            .form-group {
+                margin-bottom: 8px;
+            }
+
+            .form-label {
+                font-size: 0.7rem;
+                margin-bottom: 3px;
+            }
+
+            .form-label i {
+                font-size: 0.8rem;
+                margin-right: 4px;
+            }
+
+            .form-control {
+                padding: 6px 8px;
+                font-size: 0.75rem;
+                border-radius: 6px;
+            }
+
+            .form-control::placeholder {
+                font-size: 0.75rem;
+            }
+
+            .form-check-input {
+                width: 14px;
+                height: 14px;
+            }
+
+            .form-check-label {
+                font-size: 0.7rem;
+                margin-left: 5px;
+            }
+
+            .options-row {
+                flex-direction: column;
+                gap: 6px;
+                margin-bottom: 8px;
+            }
+
+            .forget-password a {
+                font-size: 0.65rem;
+            }
+
+            .btn-login {
+                padding: 7px;
+                font-size: 0.8rem;
+                margin-top: 4px;
+                border-radius: 6px;
+            }
+
+            .btn-login::before {
+                display: none;
+            }
+
+            .alert {
+                padding: 6px 10px;
+                font-size: 0.7rem;
+                margin-bottom: 6px;
+                border-radius: 4px;
+            }
+
+            .error-message {
+                font-size: 0.65rem;
+                margin-top: 2px;
+            }
+
+            .signup-link {
+                font-size: 0.65rem;
+                margin-top: 6px;
+                padding-top: 6px;
+            }
+
+            .login-slogan {
+                font-size: 0.75rem;
+                margin-bottom: 5px;
+                letter-spacing: 0.2px;
+            }
+
+            .login-slogan::after {
+                width: 25px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .login-container {
+                margin: 3px;
+                max-width: calc(100% - 6px);
+                border-radius: 8px;
+            }
+
+            .login-left {
+                min-height: 120px;
+                padding: 10px 8px;
+            }
+
+            .login-header {
+                padding: 10px 8px;
+            }
+
+            .login-header h1 {
+                font-size: 0.95rem;
+            }
+
+            .login-header p {
+                font-size: 0.65rem;
+                margin-top: 2px;
+            }
+
+            .login-body {
+                padding: 10px;
+            }
+
+            .form-group {
+                margin-bottom: 6px;
+            }
+
+            .form-label {
+                font-size: 0.65rem;
+            }
+
+            .form-control {
+                padding: 5px 6px;
+                font-size: 0.7rem;
+            }
+
+            .btn-login {
+                padding: 6px;
+                font-size: 0.75rem;
+                margin-top: 3px;
+            }
+
+            .signup-link {
+                font-size: 0.6rem;
+                margin-top: 5px;
+                padding-top: 5px;
+            }
+
+            .login-slogan {
+                font-size: 0.7rem;
+                margin-bottom: 4px;
+                letter-spacing: 0.1px;
+            }
+
+            .login-slogan::after {
+                width: 20px;
             }
         }
     </style>
@@ -491,14 +945,19 @@
     </div>
 
     <div class="login-container">
-        <!-- Header -->
-        <div class="login-header">
-            <h1><i class="fas fa-dumbbell"></i> Gym App</h1>
-            <p>Transform Your Body, Transform Your Life</p>
-        </div>
+        <!-- Left Side - Image -->
+        <div class="login-left"></div>
 
-        <!-- Login Form -->
-        <div class="login-body">
+        <!-- Right Side - Form -->
+        <div class="login-right">
+            <!-- Header -->
+            <div class="login-header">
+                <h1><i class="fas fa-dumbbell"></i> Gym App</h1>
+                <p>Transform Your Body, Transform Your Life</p>
+            </div>
+
+            <!-- Login Form -->
+            <div class="login-body">
             <!-- Alert Messages -->
             <?php if (session()->getFlashdata('error')): ?>
                 <div class="alert alert-danger" role="alert">
@@ -527,7 +986,7 @@
                         id="email" 
                         name="email" 
                         placeholder="Enter your email" 
-                        required
+                        required autofocus
                     >
                     <div class="error-message" id="emailError"></div>
                 </div>
@@ -548,23 +1007,7 @@
                     <div class="error-message" id="passwordError"></div>
                 </div>
 
-                <!-- Remember Me & Forgot Password -->
-                <div class="options-row">
-                    <div class="form-check">
-                        <input 
-                            class="form-check-input" 
-                            type="checkbox" 
-                            id="rememberMe" 
-                            name="rememberMe"
-                        >
-                        <label class="form-check-label" for="rememberMe">
-                            Remember me
-                        </label>
-                    </div>
-                    <div class="forget-password">
-                        <a href="/forgot-password">Forgot Password?</a>
-                    </div>
-                </div>
+                
 
                 <!-- Login Button -->
                 <button type="submit" class="btn-login">
@@ -575,9 +1018,15 @@
                 </button>
             </form>
 
-            <!-- Sign Up Link -->
+            <!-- Slogan -->
+            <div class="login-slogan">
+                🔥 Rise Stronger Every Day 💪
+            </div>
+
+            <!-- Copyright -->
             <div class="signup-link">
-                Don't have an account? <a href="/register">Create one now!</a>
+                © 2026 Developed by <span style="color: #ccff00; font-weight: 700;">ErrorToArray</span>
+            </div>
             </div>
         </div>
     </div>
