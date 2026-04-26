@@ -83,15 +83,18 @@
                     <!-- Start Date -->
                     <div class="col-md-6 mb-4">
                         <label for="start_date" class="form-label" style="color: #ccff00;">Start Date <span style="color: #ff4444;">*</span></label>
-                        <input 
-                            type="date" 
-                            class="form-control <?= session()->getFlashdata('errors.start_date') ? 'is-invalid' : '' ?>" 
-                            id="start_date" 
-                            name="start_date" 
-                            value="<?= old('start_date', $subscription['start_date'] ?? '') ?>"
-                            required
-                            style="background: rgba(20, 25, 40, 0.8); border: 2px solid #333; color: #aaa;"
-                        >
+                        <div style="position: relative;">
+                            <input 
+                                type="date" 
+                                class="form-control <?= session()->getFlashdata('errors.start_date') ? 'is-invalid' : '' ?>" 
+                                id="start_date" 
+                                name="start_date" 
+                                value="<?= old('start_date', $subscription['start_date'] ?? '') ?>"
+                                required
+                                style="background: rgba(20, 25, 40, 0.8); border: 2px solid #333; color: #aaa; appearance: none; -webkit-appearance: none; -moz-appearance: none;"
+                            >
+                            <i class="fas fa-calendar-alt" onclick="document.getElementById('start_date').focus(); document.getElementById('start_date').click();" style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: #ccff00; cursor: pointer; pointer-events: auto;"></i>
+                        </div>
                         <?php if (session()->getFlashdata('errors.start_date')): ?>
                             <div class="invalid-feedback" style="display: block; color: #ff4444;">
                                 <?= session()->getFlashdata('errors.start_date') ?>
@@ -102,15 +105,18 @@
                     <!-- End Date -->
                     <div class="col-md-6 mb-4">
                         <label for="end_date" class="form-label" style="color: #ccff00;">End Date <span style="color: #ff4444;">*</span></label>
-                        <input 
-                            type="date" 
-                            class="form-control <?= session()->getFlashdata('errors.end_date') ? 'is-invalid' : '' ?>" 
-                            id="end_date" 
-                            name="end_date" 
-                            value="<?= old('end_date', $subscription['end_date'] ?? '') ?>"
-                            required
-                            style="background: rgba(20, 25, 40, 0.8); border: 2px solid #333; color: #aaa;"
-                        >
+                        <div style="position: relative;">
+                            <input 
+                                type="date" 
+                                class="form-control <?= session()->getFlashdata('errors.end_date') ? 'is-invalid' : '' ?>" 
+                                id="end_date" 
+                                name="end_date" 
+                                value="<?= old('end_date', $subscription['end_date'] ?? '') ?>"
+                                required
+                                style="background: rgba(20, 25, 40, 0.8); border: 2px solid #333; color: #aaa; appearance: none; -webkit-appearance: none; -moz-appearance: none;"
+                            >
+                            <i class="fas fa-calendar-alt" onclick="document.getElementById('end_date').focus(); document.getElementById('end_date').click();" style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: #ccff00; cursor: pointer; pointer-events: auto;"></i>
+                        </div>
                         <?php if (session()->getFlashdata('errors.end_date')): ?>
                             <div class="invalid-feedback" style="display: block; color: #ff4444;">
                                 <?= session()->getFlashdata('errors.end_date') ?>
