@@ -11,8 +11,8 @@ class AdminSeeder extends Seeder
         $data = [
             [
                 'name'            => 'Admin User',
-                'email'           => 'admin@gymapp.com',
-                'password'        => password_hash('Admin@123', PASSWORD_BCRYPT),
+                'email'           => 'admin@admin.com',
+                'password'        => password_hash('admin123', PASSWORD_BCRYPT),
                 'role'            => 'admin',
                 'status'          => 'active',
                 'profile_picture' => null,

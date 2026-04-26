@@ -20,6 +20,6 @@ class Dashboard extends BaseController
             'user_email'  => session()->get('email'),
         ];
 
-        return view('layouts/main', $data);
+        return view('dashboard', $data);
     }
 }
