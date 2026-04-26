@@ -34,7 +34,7 @@
                     <a class="nav-link <?= $isActive('/attendance') ?>" href="<?= route_to('attendance') ?>">Attendance</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?= $isActive('/settings') ?>" href="/settings">Settings</a>
+                    <a class="nav-link <?= $isActive('/settings') ?>" href="<?= route_to('settings') ?>">Settings</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">Logout</a>

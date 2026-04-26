@@ -80,13 +80,13 @@
         }
 
         .sidebar-menu li {
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         .sidebar-menu a {
             display: flex;
             align-items: center;
-            padding: 15px 25px;
+            padding: 10px 20px;
             color: #aaa;
             text-decoration: none;
             transition: all 0.3s ease;

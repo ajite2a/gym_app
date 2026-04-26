@@ -54,3 +54,7 @@ $routes->get('/attendance/form/(:num)', 'Attendance::form/$1', ['as' => 'attenda
 $routes->post('/attendance/form/(:num)', 'Attendance::form/$1');                              // Update attendance record
 $routes->delete('/attendance/delete/(:num)', 'Attendance::delete/$1');                         // Delete attendance record
 $routes->post('/attendance/delete/(:num)', 'Attendance::delete/$1');                           // Delete attendance record (POST for forms)
+
+// Settings routes
+$routes->get('/settings', 'Settings::index', ['as' => 'settings']);                           // Settings page
+$routes->post('/settings/reset-password', 'Settings::resetPassword', ['as' => 'settings.resetPassword']); // Reset password

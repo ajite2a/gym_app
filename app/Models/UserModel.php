@@ -24,6 +24,7 @@ class UserModel extends Model
         'date_of_birth',
         'gender',
         'joined_at',
+        'last_login',
         'created_at',
         'updated_at',
     ];

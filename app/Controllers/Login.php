@@ -69,6 +69,11 @@ class Login extends BaseController
 
             session()->set($sessionData);
 
+            // Update last login timestamp
+            $userModel->update($user['id'], [
+                'last_login' => date('Y-m-d H:i:s')
+            ]);
+
             // Handle remember me
             if ($rememberMe) {
                 // Set cookie for remember me (30 days)

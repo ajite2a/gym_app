@@ -500,6 +500,18 @@
         <!-- Login Form -->
         <div class="login-body">
             <!-- Alert Messages -->
+            <?php if (session()->getFlashdata('error')): ?>
+                <div class="alert alert-danger" role="alert">
+                    <i class="fas fa-exclamation-circle"></i> <?= session()->getFlashdata('error') ?>
+                </div>
+            <?php endif; ?>
+            
+            <?php if (session()->getFlashdata('success')): ?>
+                <div class="alert alert-success" role="alert">
+                    <i class="fas fa-check-circle"></i> <?= session()->getFlashdata('success') ?>
+                </div>
+            <?php endif; ?>
+
             <div id="errorAlert" class="alert alert-danger" role="alert" style="display: none;"></div>
             <div id="successAlert" class="alert alert-success" role="alert" style="display: none;"></div>
 
@@ -577,6 +589,16 @@
 
     <script>
         $(document).ready(function() {
+            // Auto-dismiss alerts after 5 seconds
+            $('.alert:not(#errorAlert):not(#successAlert)').each(function() {
+                const $alert = $(this);
+                setTimeout(function() {
+                    $alert.fadeOut(300, function() {
+                        $alert.remove();
+                    });
+                }, 5000);
+            });
+
             // Password visibility toggle
             const passwordField = $('#password');
             
